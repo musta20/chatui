@@ -1,0 +1,18 @@
+const {ObjectId} = require("mongodb")
+module.exports ={
+    NEW_MESSAGE : "NEW_MESSAGE",
+     NEW_TICKET : "NEW_TICKET",
+ CLOSE_TICKET : "CLOSE_TICKET",
+ NEW_SESSION : "NEW_SESSION",
+ SELECT_TICKET : "SELECT_TICKET",
+ GET_MESSAGES : "GET_MESSAGES",
+ SHOW_TICKETS : "SHOW_TICKETS",
+ NEW_MESSAGE_REMOT : "NEW_MESSAGE_REMOT",
+ SHOW_MY_TICKETS:"SHOW_MY_TICKETS",
+ GET_TICKET:"GET_TICKET",
+ inferToObjectId : (strId)=>{
+    return new ObjectId(strId);
+  }
+} 
+
+

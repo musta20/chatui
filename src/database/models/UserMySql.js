@@ -10,6 +10,10 @@ const Users = sequelize.define('user', {
       name: {
         type: DataTypes.STRING,
       },  
+      role_id:{
+        type: DataTypes.INTEGER,
+
+      }
 
 },{
   timestamps: false

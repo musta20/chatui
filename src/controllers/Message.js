@@ -5,10 +5,10 @@ const Ticket = require("../database/models/Ticket");
 module.exports   = (socket) => {
 
   socket.on(NEW_MESSAGE, async ( message , callback) => {
-    console.log(message)
-  const data =  await new MessageModel(message).save();
 
-    socket.to(message.ticket).emit(NEW_MESSAGE_REMOT, message);
+    const data =  await new MessageModel(message).save();
+
+    socket.to(message.Ticket).emit(NEW_MESSAGE_REMOT, data);
     callback(data)
   });
 
@@ -23,9 +23,14 @@ module.exports   = (socket) => {
     const user = await new Ticket(ticket).save();
 
     if (user) {
+      socket.join(user.id);
+
+      console.log("joining the ticket.id")
+      console.log(user.id)
+
       callback({ status: true , ticket:user.id});
     }
-    socket.join(ticket.id);
+    
   });
 
   socket.on(GET_TICKET, async ({ID}, callback) => {
@@ -33,8 +38,9 @@ module.exports   = (socket) => {
     const user = await  Ticket.findById(inferToObjectId(ID));
 
     if (user) {
-      callback({ status: true , ticket:user.id});
       socket.join(ID);
+
+      callback({ status: true , ticket:user.id});
 
     }
 

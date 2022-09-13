@@ -27,18 +27,18 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, 
   {
     cors: {
-      origin: "http://localhost:3000",
+      origin: "http://sadna.info",
       methods: ["GET", "POST"]
     }
   });
 
-io.on("connection", async(socket) => {
+io.on("connection", (socket) => {
 
   console.log("\x1b[33m%s\x1b[0m", `SOCKETIO SERVER RUNNING ON PORT:${PORT}`);
 
-  await loaduser(socket)
-  await loadtiket(socket)
-  await loadMsg(socket)
+   loaduser(socket)
+   loadtiket(socket)
+   loadMsg(socket)
 
 });
 

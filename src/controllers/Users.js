@@ -11,7 +11,7 @@ module.exports = (socket) => {
 
     if (user) {
       console.log(user.name)
-      callback({ status: true, user: { id: user.id, name: user.name } });
+      callback({ status: true, user: { id: user.id, name: user.name ,role_id:user.role_id } });
     }
   });
 

@@ -1,5 +1,6 @@
 const { NEW_SESSION, GET_MESSAGES, NEW_TICKET } = require("../utils/type");
 const UsersModel = require("../database/models/UserMySql");
+const UsersMessage = require("../database/models/Message");
 
 module.exports = (socket) => {
   socket.on(NEW_SESSION, async ({ token }, callback) => {
@@ -18,7 +19,7 @@ module.exports = (socket) => {
 
 
   socket.on(GET_MESSAGES, async ({ Ticket }, callback) => {
-    const AllMesage = await Message.find({ Ticket });
+    const AllMesage = await UsersMessage.find({ Ticket });
 
     callback(AllMesage);
   });

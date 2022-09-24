@@ -27,7 +27,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, 
   {
     cors: {
-      origin: "http://sadna.info",
+      origin: "http://localhost:3000",
       methods: ["GET", "POST"]
     }
   });

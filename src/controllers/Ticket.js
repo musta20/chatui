@@ -24,6 +24,7 @@ module.exports = (socket) => {
   });
 
   socket.on(CLOSE_TICKET, async (ticket, callback) => {
+
     const ticketfind = await TicketModel.findOne({
       _id: inferToObjectId(ticket.id),
       SupportId: ticket.myid,
@@ -39,6 +40,7 @@ module.exports = (socket) => {
   });
 
   socket.on(SHOW_TICKETS, async (callback) => {
+
     const ticketId = await TicketModel.find({ IsOpen: true, SupportId: null });
 
     callback(ticketId);
